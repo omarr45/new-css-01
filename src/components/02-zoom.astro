@@ -1,0 +1,49 @@
+---
+import SectionWrapper from '../layouts/section-wrapper.astro';
+---
+
+<SectionWrapper title='Zoom vs Scale'>
+  <div class='row'>
+    <div class='box zoomed'>zoom: 1.5</div>
+    <div class='sibling'>Sibling</div>
+  </div>
+
+  <div class='row'>
+    <div class='box scaled'>scale: 1.5</div>
+    <div class='sibling'>Sibling</div>
+  </div>
+</SectionWrapper>
+<style>
+  .row {
+    display: flex;
+    gap: var(--s-lg);
+    align-items: flex-start;
+    margin-bottom: 4rem;
+  }
+
+  .box {
+    width: 200px;
+    height: 100px;
+
+    background: var(--c-primary);
+    border: 2px solid var(--c-text);
+
+    display: grid;
+    place-items: center;
+  }
+
+  .zoomed {
+    zoom: 1.5;
+  }
+
+  .scaled {
+    scale: 1.5;
+    transform-origin: top left;
+  }
+
+  .sibling {
+    background: var(--c-secondary);
+    padding: var(--s-sm);
+    width: fit-content;
+  }
+</style>

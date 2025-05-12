@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+/* @media (prefers-color-scheme: light) {
+  :root {
+    --text: #05141f;
+    --background: #f2f7fd;
+    --primary: #134471;
+    --secondary: #e87386;
+    --accent: #c09021;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e0effa;
+    --background: #02070d;
+    --primary: #8ebeec;
+    --secondary: #8c172a;
+    --accent: #deaf3f;
+  }
+} */
+
+/* @media (prefers-color-scheme: light) {
+  :root {
+    --text: #0c0d0e;
+    --background: #eff3f6;
+    --primary: #264764;
+    --secondary: #75aee1;
+    --accent: #1371c3;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f0f1f2;
+    --background: #090d10;
+    --primary: #9cbdd9;
+    --secondary: #1e5788;
+    --accent: #3e9cec;
+  }
+} */
+
+/* @media (prefers-color-scheme: light) {
+  :root {
+    --text: hsl(72, 83%, 7%);
+    --background: hsl(71, 80%, 96%);
+    --primary: hsl(70, 82%, 51%);
+    --secondary: hsl(188, 81%, 71%);
+    --accent: hsl(222, 82%, 62%);
+  }
+}
+ @media (prefers-color-scheme: dark) {
+  :root {
+    --text: hsl(72, 83%, 93%);
+    --background: hsl(71, 80%, 4%);
+    --primary: hsl(70, 82%, 49%);
+    --secondary: hsl(188, 81%, 29%);
+    --accent: hsl(222, 82%, 38%);
+    }
+} */
+
+:root {
+  /* colors */
+  --c-text: hsl(72, 83%, 7%);
+  --c-background: hsl(71, 80%, 96%);
+  --c-primary: hsl(70, 82%, 51%);
+  --c-secondary: hsl(188, 81%, 71%);
+  --c-accent: hsl(222, 82%, 62%);
+
+  /* border-radius */
+  --br-sm: 0.5rem;
+  --br-lg: 1rem;
+  --br-xl: 1.5rem;
+
+  /* spacing */
+  --s-sm: 1rem;
+  --s-lg: 2rem;
+  --s-xl: 3rem;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--c-background);
+  color: var(--c-text);
+  display: grid;
+  place-content: center;
+
+  position: relative;
+}
+
+.css-logo {
+  position: fixed;
+  right: var(--s-lg);
+  bottom: var(--s-lg);
+  width: 5rem;
+}

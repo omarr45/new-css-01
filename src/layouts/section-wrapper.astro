@@ -1,0 +1,46 @@
+---
+const { title } = Astro.props;
+---
+
+<section class='section-wrapper'>
+  <div class='section-content'>
+    <h2>{title}</h2>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section-wrapper {
+    width: 100vw;
+    background-color: var(--c-background);
+    color: var(--c-text);
+    height: 100dvh;
+    display: grid;
+    place-items: center;
+
+    &:nth-child(odd) {
+      background-color: color-mix(in srgb, var(--c-secondary) 30%, transparent);
+    }
+
+    .section-content > h2 {
+      margin-inline: auto;
+      margin-bottom: var(--s-lg);
+      font-size: 2rem;
+      padding: 0.5rem var(--s-lg);
+
+      max-width: fit-content;
+      text-align: center;
+
+      background-color: var(--c-primary);
+      border-radius: var(--br-sm);
+      color: var(--c-text);
+    }
+
+    .section-content {
+      width: 1000px;
+      display: grid;
+      padding: var(--s-xl) var(--s-lg);
+      margin-inline: auto;
+    }
+  }
+</style>
