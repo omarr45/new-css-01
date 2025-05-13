@@ -1,0 +1,57 @@
+---
+import SectionWrapper from '../layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  title='Round, Mod, Rem'
+  id='round-mod-rem'
+  code={`
+:root {
+  --width: 100rem;
+  --interval: 13;
+}
+div {
+  margin: round(up, var(--width), var(--interval));
+  border: mod(var(--width), var(--interval)) solid red;
+}
+`}>
+  <ul class='rmr-list'>
+    <li>Usually used with spacings (margins, paddings) and rotations.</li>
+    <li>
+      Useful especially when calculating percentages and we want to eliminate
+      sub-pixel numbers, as browsers can have problems with them.
+    </li>
+    <li>
+      They don't require <code>calc()</code>
+      <ul>
+        <li>e.g. <code>margin: round(0.5rem);</code></li>
+        <li>e.g. <code>transform: rotate(round(45deg));</code></li>
+      </ul>
+    </li>
+    <li>
+      Difference between <code>mod()</code> and <code>rem()</code>:
+      <ul>
+        <li>
+          <code>mod()</code> is the euclidean modulo, it always returns a positive
+          number.
+        </li>
+        <li>
+          <code>rem()</code> is the truncated remainder, it keeps the sign of the
+          dividend (1st number).
+        </li>
+      </ul>
+    </li>
+  </ul>
+</SectionWrapper>
+
+<style>
+  ul.rmr-list {
+    font-size: 1.25rem;
+    padding: 0;
+    padding-left: 1rem;
+
+    > li:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>

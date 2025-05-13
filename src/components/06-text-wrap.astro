@@ -1,0 +1,98 @@
+---
+import SectionWrapper from '../layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  title='Text Wrap'
+  id='text-wrap'
+  code={`
+p {
+  text-wrap: wrap; // default
+  text-wrap: nowrap;
+  text-wrap: balance;
+  text-wrap: pretty;
+}
+`}>
+  <div class='holder'>
+    <p class='wrap'>
+      The default behavior; the text in the heading wraps "normally"
+    </p>
+
+    <p class='nowrap'>
+      In this case the text in the heading doesn't wrap, and overflows the
+      container
+    </p>
+
+    <p class='balance'>
+      In this case the text in the heading is nicely balanced across lines
+    </p>
+
+    <hr />
+
+    <p class='wrap'>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit molestiae autem.
+      Odio molestiae tenetur aliquid exercit <bdi style='color:red'>ationem</bdi
+      >.
+    </p>
+
+    <p class='pretty'>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit molestiae autem.
+      Odio molestiae tenetur aliquid exercit ationem.
+    </p>
+  </div>
+</SectionWrapper>
+
+<style>
+  .holder {
+    border: 2px dashed var(--c-accent);
+    padding: var(--s-sm);
+    border-radius: var(--br-xl);
+    font-size: 1.5rem;
+    width: 40ch;
+    margin-inline: auto;
+
+    & > *:not(:last-child) {
+      margin-bottom: var(--s-sm);
+    }
+
+    p {
+      position: relative;
+
+      &:hover {
+        outline: 2px dashed rgba(from var(--c-accent) r g b / 0.5);
+        outline-offset: 0.5rem;
+        border-radius: var(--br-sm);
+        &::before {
+          content: attr(class);
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: fit-content;
+          height: fit-content;
+          top: 50%;
+          translate: -130% -50%;
+          padding: 0.25rem 0.5rem;
+          border-radius: var(--br-lg);
+          background-color: var(--c-secondary);
+        }
+      }
+    }
+
+    .wrap {
+      text-wrap: wrap;
+    }
+
+    .nowrap {
+      text-wrap: nowrap;
+    }
+
+    .balance {
+      text-wrap: balance;
+    }
+    .pretty {
+      text-wrap: pretty;
+    }
+  }
+</style>

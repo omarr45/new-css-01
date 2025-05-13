@@ -2,31 +2,45 @@
 import SectionWrapper from '../layouts/section-wrapper.astro';
 ---
 
-<SectionWrapper title='Zoom vs Scale'>
-  <div class='row'>
-    <div class='box zoomed'>zoom: 1.5</div>
-    <div class='sibling'>Sibling</div>
-  </div>
+<SectionWrapper
+  id='zoom'
+  title='Zoom vs Scale'
+  code={`
+.zoomed {
+  zoom: 1.5;
+}
+.scaled {
+  scale: 1.5;
+  transform-origin: top left;
+}
+`}>
+  <div class='holder'>
+    <div class='col'>
+      <div class='box zoomed'>zoom: 1.5</div>
+      <div class='sibling'>Sibling</div>
+    </div>
 
-  <div class='row'>
-    <div class='box scaled'>scale: 1.5</div>
-    <div class='sibling'>Sibling</div>
+    <div class='col'>
+      <div class='box scaled'>scale: 1.5</div>
+      <div class='sibling'>Sibling</div>
+    </div>
   </div>
+  <p class='info'>Unfortunately, non-animatable.</p>
 </SectionWrapper>
-<style>
-  .row {
-    display: flex;
-    gap: var(--s-lg);
-    align-items: flex-start;
-    margin-bottom: 4rem;
-  }
 
+<style>
+  .holder {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-xl);
+  }
   .box {
     width: 200px;
     height: 100px;
 
     background: var(--c-primary);
     border: 2px solid var(--c-text);
+    opacity: 0.8;
 
     display: grid;
     place-items: center;
@@ -42,8 +56,18 @@ import SectionWrapper from '../layouts/section-wrapper.astro';
   }
 
   .sibling {
+    margin-top: var(--s-lg);
     background: var(--c-secondary);
     padding: var(--s-sm);
     width: fit-content;
+  }
+
+  .info {
+    background-color: rgba(from var(--c-accent) r g b / 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: var(--br-sm);
+    font-size: 1.25rem;
+    text-align: center;
+    margin-top: 1rem;
   }
 </style>

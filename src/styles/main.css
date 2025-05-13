@@ -83,9 +83,16 @@ body {
   background-color: var(--c-background);
   color: var(--c-text);
   display: grid;
-  place-content: center;
-
+  place-items: center;
   position: relative;
+
+  & > section {
+    background-color: var(--c-background);
+
+    &:nth-child(even) {
+      background-color: color-mix(in srgb, var(--c-secondary) 30%, transparent);
+    }
+  }
 }
 
 .css-logo {

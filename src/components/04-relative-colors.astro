@@ -1,0 +1,36 @@
+---
+import SectionWrapper from '../layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  title='Relative Colors'
+  id='relative-color'
+  code={`
+button:hover {
+  background-color: hsl(from var(--c-secondary) h s calc(l + 5));
+}
+button:hover {
+  background-color: rgba(from var(--c-secondary) r g b / 0.8);
+}
+`}>
+  <button>Hover me 🙋🏻‍♂️</button>
+</SectionWrapper>
+
+<style>
+  button {
+    border: none;
+    padding: var(--s-xl);
+    border-radius: var(--br-lg);
+    font-size: 4rem;
+    background-color: var(--c-secondary);
+    cursor: pointer;
+
+    &:hover {
+      background-color: hsl(from var(--c-secondary) h s calc(l + 5));
+      /* background-color: hsl(from var(--c-secondary) h s l / 0.5); */
+    }
+    &:active {
+      background-color: hsl(from var(--c-secondary) h s calc(l - 5));
+    }
+  }
+</style>

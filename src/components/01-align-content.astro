@@ -1,0 +1,56 @@
+---
+import SectionWrapper from '../layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  title='Align Content'
+  id='align-content-block'
+  code={`
+div {
+  align-content: center;
+}`}>
+  <div>
+    <p>CSS Is Awesome</p>
+  </div>
+</SectionWrapper>
+
+<style>
+  div {
+    border: 5px solid var(--c-accent);
+    border-radius: var(--br-xl);
+    padding: 10px;
+    height: 500px;
+    align-content: center;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 50%;
+      translate: -50%;
+      border-right: 4px dotted rgba(from var(--c-accent) r g b / 0.5);
+      border-radius: var(--br-xl);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  p {
+    font-size: 40px;
+    background: var(--c-text);
+    color: var(--c-background);
+    padding: 20px;
+    border-radius: var(--br-sm);
+
+    /* text-align: center;
+    width: fit-content;
+    margin-inline: auto; */
+  }
+</style>

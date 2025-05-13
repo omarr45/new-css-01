@@ -1,0 +1,56 @@
+---
+import SectionWrapper from '../layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  title='Media Query Range'
+  id='media-query-range-syntax'
+  code={`
+@media (800px <= width <= 1100px) {
+  p {
+    background-color: blue;
+  }
+}
+`}>
+  <p class='mqr'>I am blue between 800px & 1100px!</p>
+  <p class='mqr-b'>window width = <span class='mqr-w'></span>px</p>
+
+  <script>
+    const mqrW = document.querySelector('.mqr-w')! as HTMLSpanElement;
+
+    function updateWidth() {
+      mqrW.innerText = `${window.innerWidth}`;
+    }
+
+    window.addEventListener('resize', updateWidth);
+    updateWidth(); // Initial call to set the width on page load
+  </script>
+</SectionWrapper>
+
+<style>
+  .mqr {
+    background-color: var(--c-primary);
+    padding: 1rem;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: var(--br-lg);
+  }
+
+  .mqr-b {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: rgba(from var(--c-text) r g b / 0.8);
+  }
+
+  .mqr-w {
+    font-weight: bold;
+    color: var(--c-text);
+  }
+
+  @media (800px <= width <= 1100px) {
+    .mqr {
+      background-color: var(--c-accent);
+    }
+  }
+</style>

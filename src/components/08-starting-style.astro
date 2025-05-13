@@ -1,0 +1,93 @@
+---
+import SectionWrapper from '../layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  title='Starting Style'
+  id='starting-style'
+  code={`
+.list-item {
+  transition: all 0.2s ease-in-out;
+  translate: 0;
+
+  @starting-style {
+    translate: 0 100%;
+    scale: 0;
+  }
+}
+`}>
+  <div id='ss'>
+    <div>
+      <button id='ss-add'>+ Add Item</button><button id='ss-reset'>Reset</button
+      >
+    </div>
+    <ul id='ss-list'>
+      <li class='ss-item'>Item 1</li>
+      <li class='ss-item'>Item 2</li>
+    </ul>
+  </div>
+
+  <!-- We need is:global for the new elements to accept the styles -->
+  <style is:global>
+    #ss div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      button {
+        /* background-color: var(--c-text);
+      color: var(--c-accent); */
+        padding: 0.5rem 1rem;
+        border-radius: var(--s-sm);
+        border: none;
+        font-size: 1.25rem;
+        cursor: pointer;
+
+        &#ss-add {
+          background-color: var(--c-secondary);
+          color: var(--c-text);
+        }
+      }
+    }
+    #ss-list {
+      display: flex;
+      gap: var(--s-sm);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+      font-size: 1.25rem;
+      margin-top: var(--s-sm);
+    }
+    .ss-item {
+      transition: all 0.2s ease-in-out;
+      translate: 0;
+      background-color: var(--c-accent);
+      color: var(--c-background);
+      padding: 0.5rem 1rem;
+      border-radius: var(--s-sm);
+
+      @starting-style {
+        translate: 0 100%;
+        scale: 0;
+      }
+    }
+  </style>
+
+  <script>
+    const ssList = document.querySelector('#ss-list')!;
+    const ssAdd = document.querySelector('#ss-add')!;
+    const ssReset = document.querySelector('#ss-reset')!;
+
+    ssAdd.addEventListener('click', () => {
+      const li = document.createElement('li');
+      li.textContent = `Item ${ssList.children.length + 1}`;
+      li.classList.add('ss-item');
+      ssList.appendChild(li);
+    });
+
+    ssReset.addEventListener('click', () => {
+      ssList.innerHTML =
+        "<li class='ss-item'>Item 1</li><li class='ss-item'>Item 2</li>";
+    });
+  </script>
+</SectionWrapper>

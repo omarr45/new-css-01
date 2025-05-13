@@ -1,8 +1,14 @@
 ---
 import Hero from '../components/00-hero.astro';
-import Shape from '../components/01-shape.astro';
+import AlignContent from '../components/01-align-content.astro';
 import Zoom from '../components/02-zoom.astro';
-import AlignContent from '../components/03-align-content.astro';
+import UserValid from '../components/03-user-valid.astro';
+import RelativeColors from '../components/04-relative-colors.astro';
+import RoundModRem from '../components/05-round-mod-rem.astro';
+import TextWrap from '../components/06-text-wrap.astro';
+import Shape from '../components/07-shape.astro';
+import StartingStyle from '../components/08-starting-style.astro';
+import MediaQueryRange from '../components/09-media-query-range-syntax.astro';
 import cssLogo from '../assets/purple-css-logo.webp';
 import '../styles/reset.css';
 import '../styles/main.css';
@@ -17,11 +23,19 @@ import '../styles/main.css';
     <title>Sharing is Caring</title>
   </head>
   <body>
-    <img class='css-logo' title='New CSS Logo!' src={cssLogo.src} />
     <Hero />
-    <Shape />
-    <Zoom />
+
     <AlignContent />
+    <Zoom />
+    <UserValid />
+    <RelativeColors />
+    <RoundModRem />
+    <TextWrap />
+    <Shape />
+    <StartingStyle />
+    <MediaQueryRange />
+
+    <img class='css-logo' title='New CSS Logo!' src={cssLogo.src} />
   </body>
 </html>
 
@@ -30,6 +44,7 @@ import '../styles/main.css';
   
   - @property
   - conical gradients
-  -
+  - anchor API
+  - select API
   
 -->

@@ -1,0 +1,127 @@
+---
+import SectionWrapper from '../layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  title=':user-valid'
+  id='user-pseudos'
+  code={`
+input:user-valid {
+  outline: 2px solid green;
+}
+input:user-invalid {
+  outline: 2px solid red;
+}
+`}>
+  <div class='holder'>
+    <form class='old'>
+      <p>(:valid & :invalid)</p>
+      <div class='form-el'>
+        <label for='email'>Email *: </label>
+        <input id='email' name='email' type='email' value='test' required />
+        <span></span>
+      </div>
+      <div class='form-el'>
+        <label for='email-2'>Email *: </label>
+        <input
+          id='email-2'
+          name='email-2'
+          type='email'
+          value='user@gmail.com'
+          required
+        />
+        <span></span>
+      </div>
+    </form>
+    <form class='new'>
+      <p>(:user-valid & :user-invalid)</p>
+      <div class='form-el'>
+        <label for='email-3'>Email *: </label>
+        <input id='email-3' name='email-3' type='email' value='test' required />
+        <span></span>
+      </div>
+      <div class='form-el'>
+        <label for='email-4'>Email *: </label>
+        <input
+          id='email-4'
+          name='email-4'
+          type='email'
+          value='user@gmail.com'
+          required
+        />
+        <span></span>
+      </div>
+    </form>
+  </div>
+</SectionWrapper>
+
+<style>
+  .holder {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-lg);
+
+    font-size: 1.25rem;
+  }
+
+  form {
+    p {
+      margin-bottom: var(--s-sm);
+      background-color: var(--c-accent);
+      padding: var(--s-sm);
+      color: var(--c-background);
+      font-weight: bold;
+    }
+    .form-el {
+      display: flex;
+      align-items: center;
+      gap: var(--s-sm);
+      margin-bottom: var(--s-sm);
+
+      label {
+        min-width: fit-content;
+      }
+      input {
+        width: 16ch;
+      }
+    }
+  }
+
+  .old {
+    input:valid {
+      outline: 2px solid green;
+    }
+
+    input:valid + span::before {
+      content: '✓';
+      color: green;
+    }
+
+    input:invalid {
+      outline: 2px solid red;
+    }
+
+    input:invalid + span::before {
+      content: '✗';
+      color: red;
+    }
+  }
+  .new {
+    input:user-valid {
+      outline: 2px solid green;
+    }
+
+    input:user-valid + span::before {
+      content: '✓';
+      color: green;
+    }
+    input:user-invalid {
+      outline: 2px solid red;
+    }
+
+    input:user-invalid + span::before {
+      content: 'x';
+      color: red;
+    }
+  }
+</style>
