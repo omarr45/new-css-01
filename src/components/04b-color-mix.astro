@@ -3,14 +3,11 @@ import SectionWrapper from '../layouts/section-wrapper.astro';
 ---
 
 <SectionWrapper
-  title='Relative Colors'
-  id='relative-color'
+  title='Color Mix'
+  id='color-mix'
   code={`
 button:hover {
-  background-color: hsl(from var(--c-secondary) h s calc(l + 5));
-}
-button:hover {
-  background-color: rgba(from var(--c-secondary) r g b / 0.8);
+  background-color: color-mix(in srgb, var(--c-secondary), white 20%);
 }
 `}>
   <button>Hover me 🙋🏻‍♂️</button>
@@ -27,11 +24,10 @@ button:hover {
     cursor: pointer;
 
     &:hover {
-      background-color: hsl(from var(--c-secondary) h s calc(l + 5));
-      /* background-color: hsl(from var(--c-secondary) h s l / 0.5); */
+      background-color: color-mix(in srgb, var(--c-secondary), white 20%);
     }
     &:active {
-      background-color: hsl(from var(--c-secondary) h s calc(l - 5));
+      background-color: color-mix(in srgb, var(--c-secondary), black 10%);
     }
   }
 </style>

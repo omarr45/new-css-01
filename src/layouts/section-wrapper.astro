@@ -21,6 +21,13 @@ import { BaselineStatus } from 'astro-embed';
     place-items: center;
     position: relative;
 
+    .section-content {
+      width: 100%;
+      max-width: 800px;
+      display: grid;
+      padding: var(--s-xl) var(--s-lg);
+      margin-inline: auto;
+    }
     .section-content > h2 {
       margin-inline: auto;
       margin-bottom: var(--s-lg);
@@ -62,14 +69,6 @@ import { BaselineStatus } from 'astro-embed';
       color: var(--c-background);
 
       transition: all 0.3s ease-in-out;
-    }
-
-    .section-content {
-      width: 100%;
-      max-width: 800px;
-      display: grid;
-      padding: var(--s-xl) var(--s-lg);
-      margin-inline: auto;
     }
 
     .baseline-status {

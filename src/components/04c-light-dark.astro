@@ -1,0 +1,54 @@
+---
+import SectionWrapper from '../layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  title='Light-Dark'
+  id='light-dark'
+  code={`
+button:hover {
+  background-color: light-dark(var(--c-primary), var(--c-secondary));
+}
+`}>
+  <button id='ld-b'>BTN</button>
+  <script>
+    // If user prefers color-scheme dark, set the button text to (I am dark)
+    // If user prefers color-scheme light, set the button text to (I am light)
+    const button = document.getElementById('ld-b')!;
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+
+    if (prefersDark.matches) {
+      button.innerText = 'I am dark';
+    } else if (prefersLight.matches) {
+      button.innerText = 'I am light';
+    } else {
+      button.innerText = 'I am default';
+    }
+
+    // Listen for changes in the user's color scheme preference
+    prefersDark.addEventListener('change', (e) => {
+      if (e.matches) {
+        button.innerText = 'I am dark';
+      } else {
+        button.innerText = 'I am light';
+      }
+    });
+  </script>
+</SectionWrapper>
+
+<style>
+  :root {
+    color-scheme: light dark;
+  }
+  button {
+    border: none;
+    padding: var(--s-xl);
+    border-radius: var(--br-lg);
+    font-size: 4rem;
+    background-color: light-dark(var(--c-primary), var(--c-secondary));
+    color: var(--c-text);
+    cursor: pointer;
+  }
+</style>
