@@ -22,7 +22,7 @@ div {
       sub-pixel numbers, as browsers can have problems with them.
     </li>
     <li>
-      They don't require <code>calc()</code>
+      They don't require <code>calc()</code>:
       <ul>
         <li>e.g. <code>margin: round(0.5rem);</code></li>
         <li>e.g. <code>transform: rotate(round(45deg));</code></li>
@@ -53,5 +53,13 @@ div {
     > li:not(:last-child) {
       margin-bottom: 0.5rem;
     }
+  }
+
+  code {
+    font-size: 1.25rem;
+    background-color: hsl(from var(--c-text) h s l / 0.9);
+    color: var(--c-background);
+    padding: 0.125rem 0.25rem;
+    border-radius: var(--br-sm);
   }
 </style>
