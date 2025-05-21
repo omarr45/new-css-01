@@ -1,0 +1,102 @@
+---
+import SectionWrapper from '@/layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  id='subgrid'
+  title='Subgrid'
+  code={`
+form {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: auto 1fr;
+
+  .input-group {
+    grid-column: span 2;
+    grid-template-columns: subgrid;
+
+    align-items: baseline;
+    justify-items: end;
+  }
+}
+`}>
+  <form>
+    <div class='input-group'>
+      <label for='type'>JIRA Type</label>
+      <select name='type' id='type' required>
+        <option value=''>Select...</option>
+        <option value='bug'>Bug</option>
+        <option value='enhancement'>Enhancement</option>
+        <option value='other'>Other</option>
+      </select>
+    </div>
+    <div class='input-group'>
+      <label for='description'>Description</label>
+      <textarea
+        name='description'
+        id='description'
+        rows='4'
+        required
+        placeholder='Enter description here...'></textarea>
+    </div>
+    <div class='input-group'>
+      <label for='priority'>Priority</label>
+      <select name='priority' id='priority' required>
+        <option value=''>Select...</option>
+        <option value='low'>Low</option>
+        <option value='medium'>Medium</option>
+        <option value='high'>High</option>
+      </select>
+    </div>
+    <div class='input-group'>
+      <label for='assignee'>Assignee</label>
+      <input
+        type='text'
+        name='assignee'
+        id='assignee'
+        placeholder='Enter assignee name'
+        required
+      />
+    </div>
+  </form>
+</SectionWrapper>
+
+<style>
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--c-accent);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: var(--c-text);
+  }
+
+  .input-group {
+    display: grid;
+
+    &:not(:last-child) {
+      margin-bottom: var(--s-sm);
+    }
+  }
+
+  form {
+    display: grid;
+    gap: var(--s-sm);
+    grid-template-columns: auto 1fr;
+
+    .input-group {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: subgrid;
+
+      justify-items: end;
+      align-items: baseline;
+
+      & label {
+        font-size: 1.5rem;
+      }
+    }
+  }
+</style>

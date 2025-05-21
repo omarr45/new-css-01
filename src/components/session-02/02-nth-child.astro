@@ -1,0 +1,73 @@
+---
+import SectionWrapper from '@/layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  id='nth-child-of'
+  title='Nth Child Of <S>'
+  code={`
+li.important:nth-child(-n + 3) {
+  border: 3px dashed var(--c-accent);
+}
+:nth-child(-n + 3 of li.important) {
+  outline: 3px dashed red;
+}
+`}>
+  <ol>
+    <li class='important'>Important</li>
+    <li>Not Important</li>
+    <li class='important'>Important</li>
+    <li>Not Important</li>
+    <li>Not Important</li>
+    <li>Not Important</li>
+    <li class='important'>Important</li>
+    <li>Not Important</li>
+    <li class='important'>Important</li>
+    <li>Not Important</li>
+  </ol>
+</SectionWrapper>
+
+<style>
+  ol {
+    li {
+      padding: 0.5rem;
+      border-radius: var(--br-sm);
+      border: 3px solid transparent;
+      background-color: hsl(from var(--c-text) h s l / 0.15);
+      position: relative;
+
+      &:not(:first-child) {
+        margin-top: var(--s-sm);
+      }
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        font-size: 1.5rem;
+        font-weight: 700;
+        top: 1px;
+      }
+    }
+
+    li.important:nth-child(-n + 3) {
+      border: 3px dashed var(--c-accent);
+
+      &:before {
+        content: '>';
+        left: -3ch;
+        color: var(--c-accent);
+      }
+    }
+
+    :nth-child(-n + 3 of li.important) {
+      outline: 3px dashed red;
+
+      &:after {
+        content: '<';
+        right: -3ch;
+        color: red;
+      }
+    }
+  }
+</style>

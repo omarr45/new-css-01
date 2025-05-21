@@ -1,0 +1,97 @@
+---
+import SectionWrapper from '@/layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  id='subgrid'
+  title='Subgrid'
+  code={`
+.card-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.card {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: subgrid;
+}
+`}>
+  <div class='card-grid'>
+    <div class='card'>
+      <h2>Lorem ipsum</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+      <img src='https://www.unsplash.it/501' alt='' />
+    </div>
+    <div class='card'>
+      <h2>Omnis, veritatis odio.</h2>
+      <p>
+        Enim molestiae recusandae ut dolor sit amet consectetur adipisicing.
+      </p>
+      <img src='https://www.unsplash.it/502' alt='' />
+    </div>
+    <div class='card'>
+      <h2>Exercitationem, libero quam!</h2>
+      <p>Error maiores culpa eaque.</p>
+      <img src='https://www.unsplash.it/503' alt='' />
+    </div>
+    <div class='card'>
+      <h2>Quibusdam, recusandae odio.</h2>
+      <p>Corporis laboriosam, neque est commodi architecto.</p>
+      <img src='https://www.unsplash.it/504' alt='' />
+    </div>
+    <div class='card'>
+      <h2>Modi, exer citat ionem dicta.</h2>
+      <p>
+        Laboriosam, aliquam tempore minus dolorem ullam et veniam asperiores?
+      </p>
+      <img src='https://www.unsplash.it/505' alt='' />
+    </div>
+    <div class='card'>
+      <h2>Dolore.</h2>
+      <p>
+        Reprehenderit, labore. Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Sunt, aut.
+      </p>
+      <img src='https://www.unsplash.it/506' alt='' />
+    </div>
+  </div>
+</SectionWrapper>
+
+<style>
+  .card-grid {
+    display: grid;
+    gap: var(--br-lg);
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .card {
+    border: 3px solid var(--c-text);
+    background-color: var(--c-background);
+
+    display: grid;
+    gap: var(--s-sm);
+    grid-template-rows: min-content 1fr;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-column: span 2;
+    grid-template-columns: subgrid;
+
+    h2 {
+      padding: var(--s-sm) var(--s-sm) 0 0;
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    p {
+      padding: 0 var(--s-sm) var(--s-sm) 0;
+    }
+
+    img {
+      grid-row: 1 / span 2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+</style>

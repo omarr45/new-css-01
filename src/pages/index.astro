@@ -1,59 +1,103 @@
 ---
-import Hero from '../components/00-hero.astro';
-import AlignContent from '../components/01-align-content.astro';
-import Zoom from '../components/02-zoom.astro';
-import UserValid from '../components/03-user-valid.astro';
-import RelativeColors from '../components/04-relative-colors.astro';
-import ColorMix from '../components/04b-color-mix.astro';
-import LightDark from '../components/04c-light-dark.astro';
-import RoundModRem from '../components/05-round-mod-rem.astro';
-import TextWrap from '../components/06-text-wrap.astro';
-import Shape from '../components/07-shape.astro';
-import StartingStyle from '../components/08-starting-style.astro';
-import MediaQueryRange from '../components/09-media-query-range-syntax.astro';
-import cssLogo from '../assets/purple-css-logo.webp';
-import '../styles/reset.css';
-import '../styles/main.css';
+import BaseLayout from '@/layouts/base-layout.astro';
+
+// find all folders in src/components that start with s-
+const sessions = import.meta.glob('../pages/session-*.astro', {
+  eager: true,
+  import: 'default',
+});
+
+const sessionLinks = Object.keys(sessions).map((k) =>
+  k.replace('./', '').replace('.astro', '')
+);
 ---
 
-<html lang='en'>
-  <head>
-    <meta charset='utf-8' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='viewport' content='width=device-width' />
-    <meta name='generator' content={Astro.generator} />
-    <title>Sharing is Caring</title>
-  </head>
-  <body>
-    <Hero />
+<BaseLayout>
+  <section class='hero'>
+    <div class='hero-text'>
+      <h1>Sharing is Caring</h1>
+      <h2>New CSS features you can use today</h2>
+    </div>
 
-    <AlignContent />
-    <Zoom />
-    <UserValid />
-    <RelativeColors />
-    <ColorMix />
-    <LightDark />
-    <RoundModRem />
-    <TextWrap />
-    <Shape />
-    <StartingStyle />
-    <MediaQueryRange />
+    <div class='sessions'>
+      {
+        sessionLinks.map((link, idx) => (
+          <a href={link} class='card'>
+            Session {idx + 1}
+          </a>
+        ))
+      }
+    </div>
+  </section>
 
-    <img class='css-logo' title='New CSS Logo!' src={cssLogo.src} />
-  </body>
-</html>
+  <style>
+    .hero {
+      height: 100dvh;
+      align-content: center;
 
-<!-- 
+      .hero-text {
+        background: linear-gradient(
+            -20deg,
+            rgba(0, 0, 0, 0.05),
+            var(--c-secondary)
+          ),
+          linear-gradient(45deg, var(--c-accent), var(--c-primary) 80%);
+        width: fit-content;
+        margin-inline: auto;
+        padding: var(--s-lg) var(--s-xl);
+        border-radius: var(--br-lg);
+      }
+
+      h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 0;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 3.5rem;
+        font-weight: 900;
+        text-align: center;
+        max-width: 16ch;
+        line-height: 1.2;
+        margin-top: var(--s-sm);
+      }
+
+      .sessions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--s-lg);
+        justify-content: center;
+        margin-top: var(--s-xl);
+
+        .card {
+          background-color: var(--c-secondary);
+          border-radius: var(--br-lg);
+          padding: var(--s-sm);
+          font-size: 1.5rem;
+          color: var(--c-text);
+
+          &:hover {
+            background-color: hsl(from var(--c-secondary) h s calc(l - 8));
+          }
+        }
+      }
+    }
+  </style>
+
+  <!-- 
   Other props for next sessions:
   
-  - @property
-  - conical gradients
-  - anchor API
-  - select API
-  - subgrid
-  - nth-child( <N> of <selector> )
-  - :has()
-  - :not() 
-  - :where()
-  - border-image
+  [ ] @property
+  [ ] conical gradients
+  [ ] anchor API
+  [ ] select API
+  [X] subgrid
+  [ ] nth-child( <N> of <selector> )
+  [ ] :has()
+  [ ] :not() 
+  [ ] :where()
+  [ ] border-image
 -->
+</BaseLayout>

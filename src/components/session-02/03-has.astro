@@ -1,0 +1,74 @@
+---
+import SectionWrapper from '@/layouts/section-wrapper.astro';
+---
+
+<SectionWrapper
+  id='has'
+  title=':has()'
+  code={`
+li.important:nth-child(-n + 3) {
+  border: 3px dashed var(--c-accent);
+}
+:nth-child(-n + 3 of li.important) {
+  outline: 3px dashed red;
+}
+`}>
+  <div class='image-gallery'>
+    <img
+      src='https://images.unsplash.com/photo-1661335996027-0a65af891c27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI5OTQwNDU&ixlib=rb-1.2.1&q=80&w=400'
+    />
+    <img
+      src='https://images.unsplash.com/photo-1661189626525-3d7ec5d3087c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI5OTQwNDU&ixlib=rb-1.2.1&q=80&w=400'
+    />
+    <img
+      src='https://images.unsplash.com/photo-1746647695879-bfab32f59f34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI5OTQwNDU&ixlib=rb-1.2.1&q=80&w=400'
+    />
+    <img
+      src='https://images.unsplash.com/photo-1662441896128-691f7ac658ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI5OTQwNDU&ixlib=rb-1.2.1&q=80&w=400'
+    />
+    <img
+      src='https://images.unsplash.com/photo-1661880374687-4ce390284f86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI5OTQwNDU&ixlib=rb-1.2.1&q=80&w=400'
+    />
+    <img
+      src='https://images.unsplash.com/photo-1661691111071-42c262ca061e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI5OTQwNDU&ixlib=rb-1.2.1&q=80&w=400'
+    />
+    <img
+      src='https://images.unsplash.com/photo-1746980885762-d31b3ee71d4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI5OTQxMTQ&ixlib=rb-1.2.1&q=80&w=400'
+    />
+    <img
+      src='https://images.unsplash.com/photo-1747077531311-6c11789a9622?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI5OTQxMTQ&ixlib=rb-1.2.1&q=80&w=400'
+    />
+    <img
+      src='https://images.unsplash.com/photo-1660584658489-a15f806f463c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjI5OTQxMTQ&ixlib=rb-1.2.1&q=80&w=400'
+    />
+  </div>
+</SectionWrapper>
+
+<style>
+  .image-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 50rem;
+    margin-inline: auto;
+  }
+
+  .image-gallery > img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    transition:
+      scale 250ms ease,
+      opacity 250ms linear;
+  }
+
+  .image-gallery:has(img:hover) img:not(:hover) {
+    scale: 0.9;
+    opacity: 0.7;
+  }
+  /* :is()     = forgiving selector list  :is(a, body)
+  :where()  = forgiving selector list
+  :not()    = unforgiving selector list
+  :has(a, b, c)    = unforgiving selector list
+  :has(:where(a, b, c))    = forgiving selector list */
+</style>
